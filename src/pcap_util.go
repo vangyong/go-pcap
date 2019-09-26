@@ -13,7 +13,7 @@ import (
 
 var (
 	deviceName  string = "ens33"
-	snapshotLen int32  = 1024
+	snapshotLen uint32 = 1024
 	promiscuous bool   = false
 	err         error
 	timeout     time.Duration = -1 * time.Second
