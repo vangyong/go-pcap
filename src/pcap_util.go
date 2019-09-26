@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	deviceName  string = "eth0"
+	deviceName  string = "ens33"
 	snapshotLen int32  = 1024
 	promiscuous bool   = false
 	err         error
