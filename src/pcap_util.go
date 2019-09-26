@@ -12,24 +12,25 @@ import (
 )
 
 var (
-	deviceName  string = "ens33"
-	snapshotLen uint32 = 1024
-	promiscuous bool   = false
-	err         error
-	timeout     time.Duration = -1 * time.Second
-	handle      *pcap.Handle
-	packetCount int = 0
+	deviceName   string = "ens33"
+	snapshotLen1 uint32 = 1024
+	snapshotLen2 int32  = 1024
+	promiscuous  bool   = false
+	err          error
+	timeout      time.Duration = -1 * time.Second
+	handle       *pcap.Handle
+	packetCount  int = 0
 )
 
 func main() {
 	// Open output pcap file and write header
 	f, _ := os.Create("test.pcap")
 	w := pcapgo.NewWriter(f)
-	w.WriteFileHeader(snapshotLen, layers.LinkTypeEthernet)
+	w.WriteFileHeader(snapshotLen1, layers.LinkTypeEthernet)
 	defer f.Close()
 
 	// Open the device for capturing
-	handle, err = pcap.OpenLive(deviceName, snapshotLen, promiscuous, timeout)
+	handle, err = pcap.OpenLive(deviceName, snapshotLen2, promiscuous, timeout)
 	if err != nil {
 		fmt.Printf("Error opening device %s: %v", deviceName, err)
 		os.Exit(1)
