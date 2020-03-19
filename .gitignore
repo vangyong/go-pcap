@@ -1,0 +1,8 @@
+# idea ignore
+.idea/
+
+# temp ignore
+
+# system ignore
+.DS_Store
+
